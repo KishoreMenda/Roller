@@ -1,12 +1,17 @@
-name: cpplint
+name: build
+
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
+
 jobs:
-  cpplint:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-python@v1
-      - run: pip install cpplint
-      - run: cpplint --recursive
+    - uses: actions/checkout@v3
+    - name: make
+      run: make
