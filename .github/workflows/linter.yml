@@ -1,24 +1,16 @@
-name: cpplinter
-
+name: cpp-lint
 on:
- # push:
-  #  branches: [ main ]
+  push:
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
-
+    branches: [ "main" ]
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y -f build-essential g++ cmake dos2unix python3 python3-pip
-          pip install cpplint
   build:
-    needs: install
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Check Styling
-        run: cpplint *.cpp *.h
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build
+      run: |
+        docker build -t my-cpp-app .
+        docker run my-cpp-app cpplint *.cpp *.
