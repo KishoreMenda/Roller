@@ -40,4 +40,6 @@ Then run it, with an argument that provides the number of faces, such as:
 To check for your program's adoption of the style guide, within the docker
 container (see above), run **cpplint**:
 
-`cpplint *.cpp *.h`
+`cpplint *.cpp *.h
+
+//test comment`
